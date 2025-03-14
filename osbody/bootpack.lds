@@ -6,23 +6,24 @@ SECTIONS	{
 					*(.text)}
 
 	
-	. = 0x380000;
+	. = 0x290000;
 	
 	
 	
 	. = ALIGN(4);
 	_data_begin = .; 
-	.rodata  :AT (ADDR(.text) + SIZEOF(.text))  {*(.rodata)}
+	.rodata  : {*(.rodata)}
 	.rodata.str1.1 ALIGN(4)	:	{*(.rodata.str1.1)}
 	.eh_frame ALIGN(4)	:	{*(.eh_frame)}
 	.data ALIGN(4)	:	{*(.data)}
 	. = ALIGN(4);
 	__bss_start = .;
-	.bss : {*(.bss) *(COMMON)}
+	.bss : {*(.bss)}
 	__bss_end = .;
+	/DISCARD/ : {*(.comment)}
 	
 	_data_end = .;
-	_move_count = SIZEOF(.rodata) + SIZEOF(.rodata.str1.1) + SIZEOF(.eh_frame) + SIZEOF(.data) + 0x2000;
+	_move_count = _data_end - _data_begin ;
 	_move_source =LOADADDR(.rodata);
 	
 }
