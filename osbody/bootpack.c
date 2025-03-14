@@ -127,7 +127,11 @@ void HariMain(void)
 		if (fifo32_status(&fifo) == 0) {
 			io_stihlt();
 		} else {
+			
 			i = fifo32_get(&fifo);
+			if (i>100){
+			mysprintf(s, ":%d", i );
+				putfonts8_asc_sht(sht_back, 0, 216, COL8_FFFFFF, COL8_008484, s, 12);}
 			io_sti();
 			if (256 <= i && i <= 511) { /* 键盘数据*/
 				mysprintf(s, "%d", i - 256);
@@ -151,6 +155,7 @@ void HariMain(void)
 			} else if (512 <= i && i <= 767) { /* 鼠标数据*/
 				if (mouse_decode(&mdec, i - 512) != 0) {
 					/* 已经收集了3字节的数据，所以显示出来 */
+					
 					mysprintf(s, "[lcr %d %d]", mdec.x, mdec.y);
 					if ((mdec.btn & 0x01) != 0) {
 						s[1] = 'L';

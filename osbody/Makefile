@@ -12,10 +12,7 @@ osbody.bin:	start.obj  bootpack.obj naskfunc.obj hankaku.obj utils.obj dsctbl.ob
 
 %.obj:	%.s
 	as --32 -o $*.obj $*.s 
-naskfunc.obj:	naskfunc.asm
-	nasm -o $@ -f elf32  $<
-hankaku.obj:	hankaku.s
-	as --32 -o $@ $<
+
 	
 clean:
 	rm -f *.obj osbody.bin osbody.hrb haribote.sys
