@@ -15,4 +15,4 @@ osbody.bin:	start.obj  bootpack.obj naskfunc.obj hankaku.obj utils.obj dsctbl.ob
 
 	
 clean:
-	rm -f *.obj osbody.bin osbody.hrb haribote.sys
+	rm -f *.obj osbody.bin osbody.hrb
