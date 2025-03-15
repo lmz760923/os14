@@ -2,7 +2,7 @@ OUTPUT_FORMAT(elf32-i386)
 OUTPUT_ARCH(i386)
 ENTRY(mystart)
 SECTIONS	{
-	.text 0x280000: {start.obj(.mysection);
+	.text 0x280000:  {start.obj(.mysection);
 					*(.text)}
 
 	
