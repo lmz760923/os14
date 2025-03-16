@@ -8,6 +8,7 @@ struct BOOTINFO { /* 0x0ff0-0x0fff */
 	char *vram;
 };
 #define ADR_BOOTINFO	0x00000ff0
+#define ADR_DISKIMG		0x00100000
 
 /* naskfunc.nas */
 void io_hlt(void);
@@ -199,6 +200,7 @@ struct TSS32 {
 struct TASK {
 	int sel, flags;		/* sel用来存放GDT的编号*/
 	int level, priority; /* 优先级 */
+	struct FIFO32 fifo;
 	struct TSS32 tss;
 };
 struct TASKLEVEL {
@@ -218,3 +220,4 @@ struct TASK *task_alloc(void);
 void task_run(struct TASK *task, int level, int priority);
 void task_switch(void);
 void task_sleep(struct TASK *task);
+struct TASK * task_now(void);
