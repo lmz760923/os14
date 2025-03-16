@@ -153,7 +153,7 @@ pipelineflush:
 
 
 
-		lea	 	bootpack,%ESI
+		MOVL	$bootpack,%ESI
 		MOVL	$BOTPAK,%EDI
 		MOVL	$(512*1024/4),%ECX
 		CALL	memcpy

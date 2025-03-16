@@ -20,6 +20,7 @@ mbr/ipl10.bin:
 
 clean:
 	rm haribote.img -f
+	rm osbody/haribote.sys -f
 	make -C mbr clean
 	make -C osheader clean
 	make -C osbody clean
