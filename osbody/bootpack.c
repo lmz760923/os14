@@ -1,8 +1,6 @@
 /* bootpack*/
 
 #include "bootpack.h"
-#include "utils.h"
-
 
 struct FILEINFO {
 	unsigned char name[8], ext[3], type;

@@ -221,3 +221,15 @@ void task_run(struct TASK *task, int level, int priority);
 void task_switch(void);
 void task_sleep(struct TASK *task);
 struct TASK * task_now(void);
+
+/*utils.c*/
+typedef unsigned int size_t;
+int mystrcmp(char * cs,char * ct);
+
+int mystrncmp(char * cs,char * ct,size_t count);
+
+
+
+void int2str(int n, char str[]);
+
+void mysprintf(char *buf, char *fmt, ...);

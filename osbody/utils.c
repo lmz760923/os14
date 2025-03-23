@@ -1,4 +1,4 @@
-#include "utils.h"
+#include "bootpack.h"
 int mystrcmp(char * cs,char * ct)
 {
   char __res;
