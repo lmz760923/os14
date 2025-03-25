@@ -11,7 +11,7 @@ mystart:
 		.byte		1				
 		.short		1				
 		.byte		2				
-		.short		224				
+		.short		208				
 		.short		2880			
 		.byte		0xf0			
 		.short		9				

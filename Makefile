@@ -3,7 +3,10 @@ default:
 haribote.img:	mbr/ipl10.bin osbody/haribote.sys
 	dd if=/dev/zero of=./haribote.img bs=512 count=2880
 	dd if=mbr/ipl10.bin conv=notrunc of=haribote.img bs=512 count=1
-	dd if=osbody/haribote.sys conv=notrunc of=haribote.img bs=512 seek=33
+	#dd if=osbody/haribote.sys conv=notrunc of=haribote.img bs=512 seek=33
+	mount -o loop -t vfat haribote.img /mnt/image
+	cp osbody/haribote.sys /mnt/image
+	umount /mnt/image
 	
 	
 osbody/haribote.sys:	osheader/asmhead.bin osbody/osbody.hrb
