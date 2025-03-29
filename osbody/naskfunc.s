@@ -12,7 +12,7 @@
 .global memtest_sub
 .global farjmp, farcall
 .global asm_hrb_api, start_app
-
+.global	asm_hrb_api
 .extern inthandler20, inthandler21
 .extern inthandler2c, inthandler0d
 .extern inthandler0c, inthandler27
@@ -238,7 +238,7 @@ farcall:  # void farcall(int eip, int cs);
     lcall *4(%esp)  # eip, cs
     ret
 
-asm_hrb_api:
+asm_hrb_api_new:
     sti
     pushl %ds
     pushl %es
@@ -247,7 +247,7 @@ asm_hrb_api:
     movw %ss, %ax
     movw %ax, %ds  # 将操作系统用段地址存入DS和ES
     movw %ax, %es
-    # call hrb_api
+    
     cmpl $0, %eax  # 当EAX不为0时程序结束
     jne asm_end_app
     addl $32, %esp
@@ -300,3 +300,12 @@ asm_inthandler27:
     popl %ds
     popl %es
     iretl
+
+asm_hrb_api:
+    sti                    # Set Interrupt Flag (enable interrupts)
+    pushal                 # Push all general-purpose registers (EAX, ECX, EDX, EBX, ESP, EBP, ESI, EDI)
+    pushal                 # Second pushad for passing values to hrb_api
+    call   hrb_api        # Call the API function
+    addl   $32, %esp       # Clean up stack (8 registers * 4 bytes each = 32 bytes)
+    popal                  # Restore all general-purpose registers
+    iretl                 # Return from interrupt

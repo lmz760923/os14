@@ -27,6 +27,7 @@ void init_gdtidt(void)
 	set_gatedesc(idt + 0x21, (int) asm_inthandler21 -ADR_BOTPAK, 2 * 8, AR_INTGATE32);
 	set_gatedesc(idt + 0x27, (int) asm_inthandler27 -ADR_BOTPAK, 2 * 8, AR_INTGATE32);
 	set_gatedesc(idt + 0x2c, (int) asm_inthandler2c -ADR_BOTPAK, 2 * 8, AR_INTGATE32);
+	set_gatedesc(idt + 0x40, (int) asm_hrb_api -ADR_BOTPAK, 2 * 8, AR_INTGATE32);
 
 	return;
 }

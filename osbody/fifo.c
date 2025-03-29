@@ -61,3 +61,6 @@ int fifo32_status(struct FIFO32 *fifo)
 {
 	return fifo->size - fifo->free;
 }
+
+
+//if (finfo[x].name[0]==s[0] && finfo[x].name[1]==s[1] && finfo[x].name[2]==s[2] && finfo[x].name[3]==s[3] && finfo[x].name[4]==s[4] && finfo[x].name[5]==s[5] && finfo[x].name[6]==s[6] && finfo[x].name[7]==s[7] && finfo[x].name[8]==s[8] && finfo[x].name[9]==s[9] && finfo[x].name[10]==s[10])

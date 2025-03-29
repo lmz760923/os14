@@ -1,11 +1,11 @@
 default:
-	make hlt.hrb
-hlt.hrb:	hlt
-	objcopy hlt -R .eh_frame -R .comment -R symtab -R .strtab -R .shstrtab -S -g hlt.hrb -O binary
+	make hellow.hrb
+hellow.hrb:	hellow
+	objcopy hellow -R .eh_frame -R .comment -R symtab -R .strtab -R .shstrtab -S -g hellow.hrb -O binary
 
 
-hlt:	hlt.obj
-	ld  -nostdlib -nostartfile -T hlt.lds   -m elf_i386  -o hlt $^ 
+hellow:	hellow.obj
+	ld  -nostdlib -nostartfile -T hellow.lds   -m elf_i386  -o hellow $^ 
 %.s:	%.c 
 	
 	gcc -I . -S -m32 -std=c99 -Os  -fno-builtin -nostdinc -o $*.s $*.c
@@ -15,4 +15,4 @@ hlt:	hlt.obj
 
 	
 clean:
-	rm -f *.obj hlt hlt.hrb 
+	rm -f *.obj hellow hellow.hrb 
